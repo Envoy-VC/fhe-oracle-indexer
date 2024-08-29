@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: fhe-oracle-indexer
+networks:
+ - id: 42069
+   rpc_config:
+    url: http://127.0.0.1:42069
+   start_block: 0
+   contracts:
+    - name: OracleCoordinator
+      address:
+       - 0xD30C778F7Fd47CCfB93Caa589195eb288FC768c8
+      handler: src/EventHandlers.ts
+      events:
+       - event: CommitmentDeleted(bytes32 requestId)
+       - event: ConfigSet(uint256 maxOracles, uint32 previousConfigBlockNumber, bytes32 configDigest)
+       - event: ConfigUpdated((uint32) config)
+       - event: OracleAdded(address transmitter)
+       - event: OracleRemoved(address transmitter)
+       - event: OwnershipTransferRequested(address indexed from, address indexed to)
+       - event: OwnershipTransferred(address indexed from, address indexed to)
+       - event: Request(bytes32 indexed requestId, address indexed requestingContract, address requestInitiator, uint64 subscriptionId, address subscriptionOwner, bytes data, uint64 callbackGasLimit, (bytes32,address,address,uint64,uint32,uint32) commitment)
+      #  - event: Response(bytes32 indexed requestId, address transmitter)

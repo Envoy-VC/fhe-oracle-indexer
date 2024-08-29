@@ -1,0 +1,62 @@
+type OracleCoordinator_CommitmentDeleted {
+  id: ID!
+  requestId: String!
+}
+
+type OracleCoordinator_ConfigSet {
+  id: ID!
+  maxOracles: BigInt!
+  previousConfigBlockNumber: BigInt!
+  configDigest: String!
+}
+
+type OracleCoordinator_ConfigUpdated {
+  id: ID!
+  config_0: BigInt!
+}
+
+type OracleCoordinator_OracleAdded {
+  id: ID!
+  transmitter: String!
+}
+
+type OracleCoordinator_OracleRemoved {
+  id: ID!
+  transmitter: String!
+}
+
+type OracleCoordinator_OwnershipTransferRequested {
+  id: ID!
+  from: String!
+  to: String!
+}
+
+type OracleCoordinator_OwnershipTransferred {
+  id: ID!
+  from: String!
+  to: String!
+}
+
+type OracleCoordinator_Request {
+  id: ID!
+  requestId: String!
+  requestingContract: String!
+  requestInitiator: String!
+  subscriptionId: BigInt!
+  subscriptionOwner: String!
+  data: String!
+  callbackGasLimit: BigInt!
+  commitment_0: String!
+  commitment_1: String!
+  commitment_2: String!
+  commitment_3: BigInt!
+  commitment_4: BigInt!
+  commitment_5: BigInt!
+}
+
+type OracleCoordinator_Response {
+  id: ID!
+  requestId: String!
+  transmitter: String!
+}
+
