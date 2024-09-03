@@ -1,20 +1,3 @@
-type OracleCoordinator_CommitmentDeleted {
-  id: ID!
-  requestId: String!
-}
-
-type OracleCoordinator_ConfigSet {
-  id: ID!
-  maxOracles: BigInt!
-  previousConfigBlockNumber: BigInt!
-  configDigest: String!
-}
-
-type OracleCoordinator_ConfigUpdated {
-  id: ID!
-  config_0: BigInt!
-}
-
 type OracleCoordinator_OracleAdded {
   id: ID!
   transmitter: String!
@@ -25,19 +8,7 @@ type OracleCoordinator_OracleRemoved {
   transmitter: String!
 }
 
-type OracleCoordinator_OwnershipTransferRequested {
-  id: ID!
-  from: String!
-  to: String!
-}
-
-type OracleCoordinator_OwnershipTransferred {
-  id: ID!
-  from: String!
-  to: String!
-}
-
-type OracleCoordinator_Request {
+type OracleCoordinator_RequestSent {
   id: ID!
   requestId: String!
   requestingContract: String!
@@ -54,9 +25,74 @@ type OracleCoordinator_Request {
   commitment_5: BigInt!
 }
 
-type OracleCoordinator_Response {
+type OracleCoordinator_ResponseReceived {
   id: ID!
   requestId: String!
   transmitter: String!
+}
+
+type OracleRouter_RequestNotProcessed {
+  id: ID!
+  requestId: String!
+  coordinator: String!
+  transmitter: String!
+  resultCode: BigInt!
+}
+
+type OracleRouter_RequestProcessed {
+  id: ID!
+  requestId: String!
+  subscriptionId: BigInt!
+  transmitter: String!
+  resultCode: BigInt!
+  response: String!
+  err: String!
+  callbackReturnData: String!
+}
+
+type OracleRouter_RequestStart {
+  id: ID!
+  requestId: String!
+  subscriptionId: BigInt!
+  subscriptionOwner: String!
+  requestingContract: String!
+  requestInitiator: String!
+  data: String!
+  callbackGasLimit: BigInt!
+}
+
+type OracleRouter_RequestTimedOut {
+  id: ID!
+  requestId: String!
+}
+
+type OracleRouter_SubscriptionCanceled {
+  id: ID!
+  subscriptionId: BigInt!
+}
+
+type OracleRouter_SubscriptionConsumerAdded {
+  id: ID!
+  subscriptionId: BigInt!
+  consumer: String!
+}
+
+type OracleRouter_SubscriptionConsumerRemoved {
+  id: ID!
+  subscriptionId: BigInt!
+  consumer: String!
+}
+
+type OracleRouter_SubscriptionCreated {
+  id: ID!
+  subscriptionId: BigInt!
+  owner: String!
+}
+
+type OracleRouter_SubscriptionOwnerTransferred {
+  id: ID!
+  subscriptionId: BigInt!
+  from: String!
+  to: String!
 }
 
